@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Server Manage</title>
+
+    <!-- Bootstrap and Fonts -->
+    <!-- <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    /> -->
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- JS -->
+    <script src="manage-server.js"></script>
+
+    <!-- CSS -->
+    <link href="manage-server.css" rel="stylesheet" />
+    
+  </head>
+  <body>
+    <div class="wrapper">
+      <div>
+        <button class="addBtn" onClick="addAServer()">Add a server</button>
+        <span
+          ><button class="removeBtn" onClick="removeAServer()">
+            Remove a server
+          </button></span
+        >
+      </div>
+
+      <div style="margin-top: 20px;">
+        <div>
+          <input type="number" id="newTaksInput" min="1" value="1" />
+          <button class="addBtn" id="taskBtn" onClick="addTasks()">
+            Add tasks
+          </button>
+        </div>
+
+        <div id="taskList" style="margin-top: 40px;"></div>
+      </div>
+    </div>
+  </body>
+</html>
