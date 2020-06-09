@@ -2,14 +2,14 @@
 
 let servers = [],
   tasks = [],
-  removeServer = false;
-(runningTask = 0),
-  (MAX_RUNNING_TASK = 10),
-  (TASK_TIME = 20),
-  (TASK_STATUS = {
+  removeServer = false,
+  runningTask = 0,
+  MAX_RUNNING_TASK = 10,
+  TASK_TIME = 20,
+  TASK_STATUS = {
     WAITING: "WAITING",
     RUNNING: "RUNNING",
-  });
+  };
 
 // add new server -> after server check for pending -> exist -> assign task to server
 function addAServer() {
@@ -84,7 +84,6 @@ function addTasks() {
   console.log(" new tasks--", tasks);
 }
 
-
 // time set for running task -> task will be completed in 20 sec -> so set an interval of 20 sec
 function timeSetForRunningTask(newTaskDiv, len) {
   let count = 0,
@@ -104,8 +103,8 @@ function timeSetForRunningTask(newTaskDiv, len) {
       newTaskDiv.parentNode.parentNode.removeChild(newTaskDiv.parentNode);
 
       if (removeAServer) {
-          servers.pop();
-          removeAServer = false;
+        servers.pop();
+        removeAServer = false;
       } else {
         checkForPendingTask(true);
       }
@@ -113,12 +112,11 @@ function timeSetForRunningTask(newTaskDiv, len) {
   }, 1000);
 }
 
-
 // checkForPendingTask--- > check for task with status WAITING -> if exist assign server if exist
 function checkForPendingTask(popServer) {
   console.log("tasks--", tasks.length);
 
-  let task = true; // check for pending task
+  let taskPending = true; // check for pending task
 
   if (tasks.length) {
     let task = tasks.findIndex((obj) => obj.status === TASK_STATUS.WAITING),
@@ -127,7 +125,7 @@ function checkForPendingTask(popServer) {
     console.log(task, id, "---");
 
     if (task >= 0) {
-      task = false;
+      taskPending = false;
 
       let element = document.getElementById(id),
         trashId = "trash" + (task + 1),
@@ -144,7 +142,7 @@ function checkForPendingTask(popServer) {
     }
   }
 
-  if (!tasks.length && popServer && task) {
+  if (!tasks.length && popServer && taskPending) {
     servers.pop();
   }
 }
